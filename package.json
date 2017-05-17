@@ -9,7 +9,9 @@
     "test": "set NODE_ENV=test&& mocha --compilers js:babel-core/register --require babel-polyfill ./test/*.test.js",
     "test:watch": "nodemon --exec npm run test",
     "build": "gulp build && babel app -d dist",
-    "start:prod": "cross-env NODE_ENV=production node dist/app.js"
+    "start:prod": "pm2 start ecosystem.config.js --only api --env production",
+    "stop:prod": "pm2 stop ecosystem.config.js --only api --env production",
+    "restart:prod": "pm2 restart ecosystem.config.js --only api --env production"
   },
   "author": "zeroFruit",
   "license": "ISC",
